@@ -1,4 +1,9 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../controller/login_signup_controller.dart';
+import '../core/colors.dart';
 
 class CustomDoubleLineTextWidget extends StatelessWidget {
   const CustomDoubleLineTextWidget({
@@ -35,6 +40,46 @@ class CustomDoubleLineTextWidget extends StatelessWidget {
           style: style,
         ),
       ],
+    );
+  }
+}
+
+class CustomRichText extends StatelessWidget {
+  CustomRichText({super.key, required this.text1, required this.text2});
+  final LoginSignupController loginController =
+      Get.find<LoginSignupController>();
+  final String text1;
+  final String text2;
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        text: text1, // Use dynamic text from controller
+        style: const TextStyle(
+          color: kGrey,
+          fontFamily: 'Ubuntu',
+        ),
+        children: [
+          TextSpan(
+            text: text2, // Use dynamic text from controller
+            style: const TextStyle(
+              color: kTintShadeBlue,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Ubuntu',
+            ),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                // Switch state based on current button text
+                if (loginController.textbutton.value == 'Signup') {
+                  loginController.onSignUpPressed();
+                } else {
+                  loginController.onSignInPressed();
+                }
+              },
+          ),
+        ],
+      ),
     );
   }
 }

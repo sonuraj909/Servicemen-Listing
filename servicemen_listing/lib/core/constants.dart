@@ -11,9 +11,13 @@ const String onboardScreen2TextHeading1 = "Are You Looking For";
 const String onboardScreen2TextHeading2 = "Home service";
 
 // Height box
+const kHeight8 = SizedBox(height: 8);
 const kHeight10 = SizedBox(height: 10);
 const kHeight16 = SizedBox(height: 16);
 const kHeight20 = SizedBox(height: 20);
+
+//width box
+const kWidth8 = SizedBox(width: 8);
 
 //img
 const String logo = 'assets/images/logo.png';
