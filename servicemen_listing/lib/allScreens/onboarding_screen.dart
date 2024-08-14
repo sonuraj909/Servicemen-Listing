@@ -171,7 +171,8 @@ class OnboardingScreen extends StatelessWidget {
                               onPressed: () =>
                                   _onboardingController.onNextPressed(
                                       _carouselController,
-                                      onboardingData.length),
+                                      onboardingData.length,
+                                      context),
                             )),
                       ),
                       kHeight10,
@@ -200,7 +201,7 @@ class OnboardingScreen extends StatelessWidget {
                       ),
                     ),
                     onPressed: () => _onboardingController.onNextPressed(
-                        _carouselController, onboardingData.length),
+                        _carouselController, onboardingData.length, context),
                     child: const Text(
                       "Skip",
                       style: TextStyle(color: kWhite),
