@@ -40,6 +40,7 @@ class OnboardingScreen extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
+            //onboarding images
             Obx(() {
               String imagePath = _onboardingController.currentIndex.value ==
                       onboardingData.length - 1
@@ -54,6 +55,8 @@ class OnboardingScreen extends StatelessWidget {
                 ),
               );
             }),
+
+            //onboarding carousel slider
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
@@ -156,6 +159,8 @@ class OnboardingScreen extends StatelessWidget {
                             }),
                           )),
                       kHeight16,
+
+                      // custom button route to homepage
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16.0),
                         child: Obx(() => CustomButtonWidet(

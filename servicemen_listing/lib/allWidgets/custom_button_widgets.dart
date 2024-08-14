@@ -7,14 +7,16 @@ class CustomButtonWidet extends StatelessWidget {
     super.key,
     this.onPressed,
     required this.text,
+    this.padding,
   });
   final VoidCallback? onPressed;
   final String text;
+  final double? padding;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      padding: EdgeInsets.symmetric(horizontal: padding ?? 16.0),
       child: ElevatedButton(
         style: ButtonStyle(
           backgroundColor: WidgetStateProperty.all<Color>(kTintShadeBlue),
