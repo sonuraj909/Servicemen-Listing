@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:servicemen_listing/core/colors.dart'; // Ensure this file contains your color definitions
+import 'package:servicemen_listing/core/colors.dart';
 import 'package:servicemen_listing/allWidgets/custom_text_widget.dart';
-import 'package:servicemen_listing/core/constants.dart'; // Adjust import according to your project structure
+import 'package:servicemen_listing/core/constants.dart';
 
 class CongratulationsDialog extends StatelessWidget {
   const CongratulationsDialog({
@@ -19,10 +19,21 @@ class CongratulationsDialog extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(20)),
-              child: const Icon(Icons.check_circle_outline,
-                  color: kCustomGreen, size: 50)),
+              height: 50,
+              width: 50,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: kGreenTransparent),
+              child: Center(
+                child: SizedBox(
+                  height: 15,
+                  width: 15,
+                  child: Image.asset(
+                    'assets/logo/checked.png',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              )),
           kHeight10,
           const CustomTextWidget(
             text: "Congratulations!",

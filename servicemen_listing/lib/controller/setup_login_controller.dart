@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:servicemen_listing/allScreens/home_screen.dart';
 import 'package:servicemen_listing/allWidgets/custom_dialog_box.dart';
+import '../allWidgets/custom_bottom_navigation.dart';
 
 class SetupLoginController extends GetxController {
   void showCongratulationsDialog(BuildContext context) {
@@ -19,7 +19,7 @@ class SetupLoginController extends GetxController {
   void onFinishSetup(BuildContext context) {
     Navigator.of(context).pushAndRemoveUntil(
       MaterialPageRoute(
-        builder: (context) => const HomeScreen(),
+        builder: (context) => MainScreen(),
       ),
       (Route<dynamic> route) => false,
     );

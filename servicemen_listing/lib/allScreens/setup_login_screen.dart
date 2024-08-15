@@ -6,6 +6,7 @@ import 'package:servicemen_listing/allWidgets/custom_text_widget.dart';
 import 'package:servicemen_listing/core/colors.dart';
 import 'package:servicemen_listing/core/constants.dart';
 
+import '../allWidgets/custom_app_bar.dart';
 import '../allWidgets/custom_textformfield.dart';
 import '../controller/setup_login_controller.dart';
 
@@ -28,30 +29,10 @@ class SetupLoginScreen extends StatelessWidget {
                   top: 40, bottom: 16, left: 16, right: 16),
               child: ListView(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: kBlack),
-                        ),
-                        child: const Icon(Icons.arrow_back_ios_new_rounded),
-                      ),
-                      const Expanded(
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: CustomTextWidget(
-                            text: "Get Started",
-                            color: kBlack,
-                            fontWeight: FontWeight.normal,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                    ],
+                  CustomAppbar(
+                    text: "Get Started",
+                    fontWeight: FontWeight.normal,
+                    fontSize: 14,
                   ),
                   kHeight10,
                   const CurvedDivider(

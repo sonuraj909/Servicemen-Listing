@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:servicemen_listing/allScreens/setup_login_screen.dart';
-import 'package:servicemen_listing/core/colors.dart'; // Make sure this file contains your color definitions
+import 'package:servicemen_listing/core/colors.dart';
 
 class LoginSignupController extends GetxController {
   final kSigninColor = kSignInBackground;
@@ -20,7 +20,6 @@ class LoginSignupController extends GetxController {
   var buttonText = 'Receive Verification Code'.obs;
   var key = ''.obs;
 
-  // Method to switch to Signup
   void onSignUpPressed() {
     topContainerColor.value = kSignupColor;
     icon.value = kSignUpIcon;
@@ -32,7 +31,6 @@ class LoginSignupController extends GetxController {
     key.value = '';
   }
 
-  // Method to switch to SignIn
   void onSignInPressed() {
     topContainerColor.value = kSigninColor;
     icon.value = kSignInIcon;
@@ -55,6 +53,14 @@ class LoginSignupController extends GetxController {
   }
 
   void onLogin(BuildContext context) {
+    topContainerColor.value = kSigninColor;
+    icon.value = kSignInIcon;
+    textbutton.value = ' Signup';
+    textbutton1.value = 'Not a member?';
+    headingText.value = 'Welcome back!';
+    subText.value = 'Sign in for fast services and new offers';
+    buttonText.value = kLoginButtonText;
+    key.value = '';
     Navigator.of(context).push(
       MaterialPageRoute(builder: (context) => SetupLoginScreen()),
     );
