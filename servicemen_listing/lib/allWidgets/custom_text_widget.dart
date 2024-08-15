@@ -71,7 +71,7 @@ class CustomRichText extends StatelessWidget {
             recognizer: TapGestureRecognizer()
               ..onTap = () {
                 // Switch state based on current button text
-                if (loginController.textbutton.value == 'Signup') {
+                if (loginController.textbutton.value == ' Signup') {
                   loginController.onSignUpPressed();
                 } else {
                   loginController.onSignInPressed();

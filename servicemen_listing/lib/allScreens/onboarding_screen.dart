@@ -180,7 +180,7 @@ class OnboardingScreen extends StatelessWidget {
                         color: kWhite,
                         thickness: 5,
                         width: screenSize.width * 0.35,
-                      )
+                      ),
                     ],
                   ),
                 ),

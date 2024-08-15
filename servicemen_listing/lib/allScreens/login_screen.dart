@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:servicemen_listing/allWidgets/custom_text_widget.dart';
 import 'package:servicemen_listing/controller/login_signup_controller.dart';
 import 'package:servicemen_listing/core/colors.dart';
@@ -75,7 +76,7 @@ class LoginScreen extends StatelessWidget {
 class SignInFieldScreen extends StatelessWidget {
   SignInFieldScreen({super.key});
   final LoginSignupController loginController =
-      Get.put(LoginSignupController());
+      Get.find<LoginSignupController>();
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +94,7 @@ class SignInFieldScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomTextWidget(
-                  text: loginController.welcomeText.value,
+                  text: loginController.headingText.value,
                   color: kBlack,
                   fontWeight: FontWeight.bold,
                   fontSize: 28,
@@ -103,70 +104,130 @@ class SignInFieldScreen extends StatelessWidget {
                   text: loginController.subText.value,
                   color: kGrey,
                   fontWeight: FontWeight.normal,
-                  fontSize: 16,
+                  fontSize: 14,
                 ),
                 kHeight16,
               ],
             ),
           ),
-          const CustomTextWidget(
-            text: 'Enter phone number',
-            color: kBlack,
-            fontWeight: FontWeight.normal,
-            fontSize: 16,
-          ),
-          kHeight8,
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Row(
-              children: [
-                Image.asset(
-                  'assets/images/india.png',
-                  width: 24,
-                ),
-                kWidth8,
-                const CustomTextWidget(
-                  text: '+91',
-                  color: kBlack,
-                  fontWeight: FontWeight.normal,
-                  fontSize: 16,
-                ),
-                kWidth8,
-                Expanded(
-                  child: TextField(
-                    decoration: const InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'Eg: 6523 - 4566 - 67',
+          Obx(() => Visibility(
+              visible: loginController.textbutton.value == ' Resend',
+              child: const VerificationCodeInput())),
+          Obx(
+            () => Visibility(
+              visible: loginController.textbutton.value != ' Resend',
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const Align(
+                    alignment: Alignment.topLeft,
+                    child: CustomTextWidget(
+                      text: 'Enter phone number',
+                      color: kBlack,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16,
                     ),
-                    keyboardType: TextInputType.phone,
-                    inputFormatters: [
-                      FilteringTextInputFormatter.digitsOnly,
-                    ],
+                  ),
+                  kHeight8,
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: kGrey),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          'assets/images/india.png',
+                          width: 24,
+                        ),
+                        kWidth8,
+                        const CustomTextWidget(
+                          text: '+91',
+                          color: kBlack,
+                          fontWeight: FontWeight.normal,
+                          fontSize: 16,
+                        ),
+                        kWidth8,
+                        Expanded(
+                          child: TextField(
+                            decoration: const InputDecoration(
+                                border: InputBorder.none,
+                                hintText: 'Eg: 6523 - 4566 - 67',
+                                hintStyle: TextStyle(
+                                    color: kGrey, fontFamily: 'Ubuntu')),
+                            keyboardType: TextInputType.phone,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly,
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  kHeight16,
+                ],
+              ),
+            ),
+          ),
+          kHeight10,
+          Obx(
+            () => Column(
+              children: [
+                CustomButtonWidet(
+                  text: loginController.buttonText.value,
+                  padding: 0,
+                  onPressed: () {
+                    if (loginController.key.value == 'login') {
+                      loginController.onLogin(context);
+                    } else {
+                      loginController.onRecievedVerification();
+                    }
+                  },
+                ),
+                kHeight16,
+                Center(
+                  child: CustomRichText(
+                    text1: loginController.textbutton1.value,
+                    text2: loginController.textbutton.value,
                   ),
                 ),
               ],
             ),
           ),
-          kHeight16,
-          const CustomButtonWidet(
-            text: 'Receive Verification Code',
-            padding: 0,
-          ),
-          kHeight16,
-          Obx(
-            () => Center(
-              child: CustomRichText(
-                text1: loginController.textbutton1.value,
-                text2: loginController.textbutton.value,
-              ),
-            ),
-          ),
         ],
       ),
+    );
+  }
+}
+
+class VerificationCodeInput extends StatelessWidget {
+  const VerificationCodeInput({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return PinCodeTextField(
+      hintCharacter: "-",
+      appContext: context,
+      length: 4,
+      obscureText: false,
+      animationType: AnimationType.fade,
+      pinTheme: PinTheme(
+        shape: PinCodeFieldShape.box,
+        borderRadius: BorderRadius.circular(10),
+        fieldHeight: 60,
+        fieldWidth: 70,
+        activeFillColor: kWhite,
+        activeColor: kGrey,
+        selectedFillColor: kWhite,
+        selectedColor: kGrey,
+        inactiveFillColor: kWhite,
+        inactiveColor: kGrey,
+      ),
+      animationDuration: const Duration(milliseconds: 300),
+      backgroundColor: Colors.transparent,
+      enableActiveFill: true,
+      keyboardType: TextInputType.number,
     );
   }
 }
