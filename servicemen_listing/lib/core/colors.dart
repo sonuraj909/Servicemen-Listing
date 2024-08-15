@@ -10,3 +10,5 @@ const kCustomGrey = Color(0xA1CDCDCD);
 const kTransparent = Color.fromARGB(0, 255, 255, 255);
 const kSignInBackground = Color(0xFF207EC2);
 const kSignUpBackground = Color(0xFF14B4CA);
+const kCustomGrey2 = Color(0xFFE8E8E8);
+const Color kCustomGreen = Color(0xFF0EA57B);

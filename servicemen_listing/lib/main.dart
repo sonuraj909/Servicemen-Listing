@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 import 'package:servicemen_listing/allScreens/splash_screen.dart';
 import 'package:servicemen_listing/core/colors.dart';
 
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Servicemen Listing',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: kTransparentBlue),
