@@ -193,20 +193,20 @@ class OnboardingScreen extends StatelessWidget {
                   top: 16,
                   right: 16,
                   child: TextButton(
-                    style: ButtonStyle(
-                      backgroundColor:
-                          WidgetStateProperty.all<Color>(kTransparent),
-                      side: WidgetStateProperty.all<BorderSide>(
-                        const BorderSide(color: kWhite, width: 1),
+                      style: ButtonStyle(
+                        backgroundColor:
+                            WidgetStateProperty.all<Color>(kTransparent),
+                        side: WidgetStateProperty.all<BorderSide>(
+                          const BorderSide(color: kWhite, width: 1),
+                        ),
                       ),
-                    ),
-                    onPressed: () => _onboardingController.onNextPressed(
-                        _carouselController, onboardingData.length, context),
-                    child: const Text(
-                      "Skip",
-                      style: TextStyle(color: kWhite),
-                    ),
-                  ),
+                      onPressed: () => _onboardingController.onNextPressed(
+                          _carouselController, onboardingData.length, context),
+                      child: CustomTextWidget(
+                          text: "Skip",
+                          color: kWhite,
+                          fontWeight: FontWeight.normal,
+                          fontSize: 12)),
                 ),
               ),
             )

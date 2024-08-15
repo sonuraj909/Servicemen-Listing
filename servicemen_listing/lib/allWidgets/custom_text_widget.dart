@@ -55,14 +55,14 @@ class CustomRichText extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(
-        text: text1, // Use dynamic text from controller
+        text: text1,
         style: const TextStyle(
           color: kGrey,
           fontFamily: 'Ubuntu',
         ),
         children: [
           TextSpan(
-            text: text2, // Use dynamic text from controller
+            text: text2,
             style: const TextStyle(
               color: kTintShadeBlue,
               fontWeight: FontWeight.bold,
@@ -70,7 +70,6 @@ class CustomRichText extends StatelessWidget {
             ),
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                // Switch state based on current button text
                 if (loginController.textbutton.value == ' Signup') {
                   loginController.onSignUpPressed();
                 } else {
